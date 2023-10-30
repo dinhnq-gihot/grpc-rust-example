@@ -1,0 +1,52 @@
+syntax = "proto3";
+package calculator;
+
+message SumRequest {
+    int32 num1 = 1;
+    int32 num2 = 2;
+}
+
+message SumReponse {
+    int32 result = 1;
+}
+
+message PNDRequest {
+    int32 number = 1;
+}
+
+message PNDResponse {
+    int32 number = 1;
+}
+
+message AverageRequest {
+    float number = 1;
+}
+
+message AverageResponse {
+    float result = 1;
+}
+
+message MaxRequest {
+    int32 number = 1;
+}
+
+message MaxResponse {
+    int32 result = 1;
+}
+
+message SquareRequest {
+    int32 number = 1;
+}
+
+message SquareResponse {
+    double result = 1;
+}
+
+service Calculator {
+    rpc Sum (SumRequest) returns (SumReponse) {}
+    rpc PrimeNumberDecompisition (PNDRequest) returns (stream PNDResponse);
+    rpc Average (stream AverageRequest) returns (AverageResponse);
+    rpc FindMax (stream MaxRequest) returns (stream MaxResponse);
+    rpc Square (SquareRequest) returns (SquareResponse);
+    rpc SumTimeout (SumRequest) returns (SumReponse);
+}

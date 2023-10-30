@@ -1,0 +1,54 @@
+[package]
+name = "grpc-demo"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]] # Bin to run the HelloWorld gRPC server
+name = "helloworld-server"
+path = "src/helloworld/server.rs"
+
+[[bin]] # Bin to run the HelloWorld gRPC client
+name = "helloworld-client"
+path = "src/helloworld/client.rs"
+
+[[bin]] # Bin to run the Calculator gRPC client
+name = "calc-server"
+path = "src/calculator/server.rs"
+
+[[bin]] # Bin to run the Calculator gRPC client
+name = "calc-client"
+path = "src/calculator/client.rs"
+
+[[bin]] # Bin to run the Calculator gRPC client
+name = "contact-client"
+path = "src/contact/client.rs"
+
+[[bin]] # Bin to run the Calculator gRPC client
+name = "contact-server"
+path = "src/contact/server.rs"
+
+[[bin]]
+name = "another_binary"
+path = "src/another_binary.rs"
+
+[workspace]
+members = ["prisma-cli"]
+resolver = "2"
+
+[dependencies]
+tonic = "0.10"
+prost = "0.12"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+tokio-stream = "0.1"
+tower = "0.4"
+
+async-stream = "0.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rand = "0.7"
+rustls = "0.21.8"
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.9" }
+
+[build-dependencies]
+tonic-build = "0.10"
+prost-build = "0.12"
